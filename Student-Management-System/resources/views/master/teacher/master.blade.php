@@ -125,7 +125,7 @@
                             <span>Course Module</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="">Approved Course</a></li>
+                            <li><a href="{{route('approved-course')}}">Approved Course</a></li>
                             <li><a href="">Denied Course</a></li>
                             <li><a href="">Enrolled Student</a></li>
                         </ul>

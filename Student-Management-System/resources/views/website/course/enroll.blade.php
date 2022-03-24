@@ -10,7 +10,7 @@
                         <div class="card-header text-center bg-warning"><h4>Enroll Form</h4></div>
                         <div class="card-body">
 
-                            <form action="" method="post">
+                            <form action="{{route('new-enroll', ['id' => $id])}}" method="post">
                                 @csrf
                                 <div class="row my-3">
                                     <label class="col-md-3">Student Name</label>

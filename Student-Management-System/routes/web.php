@@ -9,6 +9,8 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherDashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\AdminStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +30,22 @@ use App\Http\Controllers\AdminCourseController;
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/course-detail/{id}', [WebController::class, 'detail'])->name('course-detail');
 Route::get('/enroll-now/{id}', [WebController::class, 'enroll'])->name('enroll-now');
+Route::post('/new-enroll/{id}', [WebController::class, 'newEnroll'])->name('new-enroll');
 
 Route::get('/user-login', [AuthController::class, 'login'])->name('user-login');
 Route::post('/new-login', [AuthController::class, 'newLogin'])->name('new-login');
 Route::post('/user-logout', [AuthController::class, 'logout'])->name('user-logout');
+Route::post('/student-logout', [AuthController::class, 'studentLogout'])->name('student-logout');
 Route::get('/user-register', [AuthController::class, 'register'])->name('user-register');
 
 Route::get('/teacher-dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+Route::get('/student-dashboard', [StudentDashboardController::class, 'index'])->name('student-dashboard');
 
 Route::get('/add-subject', [SubjectController::class, 'index'])->name('add-subject');
 Route::post('/new-subject', [SubjectController::class, 'create'])->name('new-subject');
 Route::get('/manage-subject', [SubjectController::class, 'manage'])->name('manage-subject');
+Route::get('/approved-course', [SubjectController::class, 'approved'])->name('approved-course');
+Route::get('/enrolled-student/{id}', [SubjectController::class, 'enrolledStudent'])->name('enrolled-student');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -59,3 +66,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/delete-teacher/{id}', [Te
 Route::middleware(['auth:sanctum', 'verified'])->get('/manage-course', [AdminCourseController::class, 'manage'])->name('manage-course');
 Route::middleware(['auth:sanctum', 'verified'])->get('/view-detail/{id}', [AdminCourseController::class, 'detail'])->name('view-detail');
 Route::middleware(['auth:sanctum', 'verified'])->get('/update-status/{id}', [AdminCourseController::class, 'updateStatus'])->name('update-status');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/manage-student', [AdminStudentController::class, 'manageStudent'])->name('manage-student');
+Route::middleware(['auth:sanctum', 'verified'])->get('/manage-student-course', [AdminStudentController::class, 'manageStudentCourse'])->name('manage-student-course');
+Route::middleware(['auth:sanctum', 'verified'])->get('/student-status/{id}', [AdminStudentController::class, 'updateStatus'])->name('student-status');
+Route::middleware(['auth:sanctum', 'verified'])->get('/update-enroll-status/{id}', [AdminStudentController::class, 'updateEnrollStatus'])->name('update-enroll-status');
