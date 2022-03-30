@@ -8,7 +8,8 @@
                     <div class="card">
                         <div class="list-group list-group-flush">
                             <a href="" class="list-group-item">My All Course</a>
-                            <a href="" class="list-group-item">My Profile</a>
+                            <a href="{{route('student-profile')}}" class="list-group-item">My Profile</a>
+                            <a href="{{route('change-password')}}" class="list-group-item">Change Password</a>
                             <a href="" class="list-group-item">My Payment</a>
                         </div>
                     </div>

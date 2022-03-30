@@ -83,4 +83,14 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function newRegistration(Request $request)
+    {
+        $this->user = Student::newStudent($request);
+
+        Session::put('student_id', $this->user->id);
+        Session::put('student_name', $this->user->name);
+
+        return redirect('/student-dashboard')->with('message', 'Your registration complete.');
+    }
 }

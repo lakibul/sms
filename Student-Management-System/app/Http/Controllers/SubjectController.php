@@ -9,7 +9,6 @@ use Session;
 
 class SubjectController extends Controller
 {
-    //
 
     private $subject;
     private $subjects;
